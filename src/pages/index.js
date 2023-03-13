@@ -1,7 +1,83 @@
+import { useState } from "react";
+import { Uploader } from "uploader";
+import { UploadButton } from "react-uploader";
 import Head from 'next/head'
 import Image from 'next/image'
 
 export default function Home() {
+  const [imageName, setImageName] = useState(null);
+  const [originalImage, setOriginalImage] = useState(null);
+
+  const [result, setResult] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const [timeOfRequest, setTimeOfRequest] = useState(undefined);
+
+  const handleSubmit = async (image) => {
+    const start = Date.now();
+    setTimeOfRequest(undefined);
+    setLoading(true);
+
+    const response = await fetch("/api/predictions", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ image }),
+    });
+
+    let result = await response.json();
+
+    if (response.status !== 201) {
+      setError(result.detail);
+      setLoading(false);
+      return;
+    }
+
+    setResult(result);
+
+    while (result.status !== "succeeded" && result.status !== "failed") {
+      await sleep(1000);
+      const response = await fetch("/api/predictions/" + result.id);
+      result = await response.json();
+
+      if (response.status !== 200) {
+        setError(result.detail);
+        setLoading(false);
+        return;
+      }
+
+      setResult(result);
+    }
+
+    if (result.status === "failed") {
+      setError(true);
+    }
+
+    if (result.status === "succeeded" || result.status === "failed") {
+      setLoading(false);
+    }
+
+    const end = Date.now();
+    setTimeOfRequest((end - start) / 1000);
+  };
+
+  let content = (
+    <>
+      <div>
+        <p>image component</p>
+        {/* Upload Wrapper */}
+      </div>
+    </>
+  );
+
+  if (error) {
+    content = (
+      <p>Error Screen</p>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -12,7 +88,9 @@ export default function Home() {
       </Head>
       <main className='container mx-auto flex min-h-screen overflow-hidden'>
         <h1>Upload Image</h1>
-        {/* Image Upload Component */}
+
+        { content }
+        
       </main>
     </>
   )
