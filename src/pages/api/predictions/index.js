@@ -1,4 +1,4 @@
- export default async function handler(req, res) {
+export default async function handler(req, res) {
   const image = req.body.image;
   const response = await fetch("https://api.replicate.com/v1/predictions", {
     method: "POST",
