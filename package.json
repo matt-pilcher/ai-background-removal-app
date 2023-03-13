@@ -11,9 +11,13 @@
   "dependencies": {
     "eslint": "8.35.0",
     "eslint-config-next": "13.2.3",
+    "file-saver": "^2.0.5",
     "next": "13.2.3",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-compare-slider": "^2.2.0",
+    "react-dom": "18.2.0",
+    "react-uploader": "^3.10.0",
+    "uploader": "^3.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
