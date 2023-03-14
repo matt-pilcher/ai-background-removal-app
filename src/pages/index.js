@@ -3,7 +3,7 @@ import { Uploader } from "uploader";
 import { UploadButton } from "react-uploader";
 import Head from "next/head";
 import UploadWrapper from "../../components/UploadWrapper";
-
+import DownloadImage from "../../components/DownloadImage";
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
@@ -117,6 +117,50 @@ export default function Home() {
       <p>Error Screen</p>
     );
   }
+
+  if (loading || (initialImage && result?.output)) {
+    content = (
+      <>
+        <DownloadImage
+          initialImage={initialImage}
+          modifiedImage={result?.output}
+          imageName={imageName}
+          loading={loading}
+          timeOfRequest={timeOfRequest}
+          uploadButtonElement={() => {
+            return (
+              <UploadButton
+                uploader={uploader}
+                onComplete={(file) => {
+                  if (file.length !== 0) {
+                    setImageName(file[0].originalFile.originalFileName);
+                    setOriginalImage(
+                      file[0].fileUrl.replace("raw", "thumbnail")
+                    );
+                    handleSubmit(file[0].fileUrl.replace("raw", "thumbnail"));
+                  }
+                }}
+                options={{
+                  styles: { colors: { primary: "#A855F7" } },
+                  mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
+                }}
+              >
+                {({ onClick }) => (
+                  <button
+                    onClick={onClick}
+                    className="transition duration-150 border-b-2 border-transparent hover:border-purple-600"
+                  >
+                    Try another image
+                  </button>
+                )}
+              </UploadButton>
+            );
+          }}
+        />
+      </>
+    );
+  }
+
 
   return (
     <div>
