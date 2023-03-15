@@ -97,7 +97,7 @@ export default function Home() {
                 {({ onClick }) => (
                   <button
                     onClick={onClick}
-                    className="btn text-white bg-teal-400 hover:bg-teal-600 rounded p-4"
+                    className="btn text-white bg-teal-400 hover:bg-teal-600 rounded py-2 px-6"
                   >
                     {btnText ? btnText : "Upload"}
                   </button>
