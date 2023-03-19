@@ -1,10 +1,15 @@
+## Live Demo
+
+App deployed here:  [https://curious-hedgehog.netlify.app/](https://curious-hedgehog.netlify.app/)
+
+
 ## Introduction
 
 It's common as a web developer to receive digital assets with solid color backgrounds. The background of an image asset often needs to be made transparent so that it doesn't clash with the existing design of a page. Normally you have to use a tool like Photoshop to manually remove the background.
 
-This tool will allow you to upload an image for the purpose of removing that background and making it transparent. 
+This app will allow you to upload an image for the purpose of removing the background/making it transparent. 
 
-I'm going to use a machine learning model trained to detect the background area of an image.
+I'm using a machine learning model through an API provided by Replicate that detects the background area of image. A good result isn't guaranteed. It seems to work best when there is a clear delineation between the background color and the main object. 
 
 ## Getting Started
 

@@ -16,7 +16,6 @@ function UploadWrapper({ uploadButtonElement }) {
         <div className="flex md:w-1/3">
           <div className="slideShow">
             <Image className="active" width={400} height={600} src='/bg-step1.jpeg' alt="bottle of water" />
-            {/* <Image width={400} height={600} src='/bg-step2.jpeg' alt="bottle of water" /> */}
           </div>
         </div>
       </section>
