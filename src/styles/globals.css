@@ -6,13 +6,6 @@ body {
   @apply font-sans font-normal leading-relaxed text-gray-800;
 }
 
-.slideShow img {
-  flex-shrink: 0;
-  height: 100%;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-}
-
-.slideShow img.active {
-  opacity: 1;
+.btnDefault {
+  @apply text-white bg-teal-400 hover:bg-teal-600 rounded py-2 px-6
 }

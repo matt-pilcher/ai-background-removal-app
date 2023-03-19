@@ -90,14 +90,14 @@ export default function Home() {
                   }
                 }}
                 options={{
-                  styles: { colors: { primary: "#A855F7" } },
+                  styles: { colors: { primary: "#319795" } },
                   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
                 }}
               >
                 {({ onClick }) => (
                   <button
                     onClick={onClick}
-                    className="btn text-white bg-teal-400 hover:bg-teal-600 rounded py-2 px-6"
+                    className="btnDefault"
                   >
                     {btnText ? btnText : "Upload"}
                   </button>
@@ -142,14 +142,14 @@ export default function Home() {
                   }
                 }}
                 options={{
-                  styles: { colors: { primary: "#A855F7" } },
+                  styles: { colors: { primary: "#319795" } },
                   mimeTypes: ["image/jpeg", "image/png", "image/jpg"],
                 }}
               >
                 {({ onClick }) => (
                   <button
                     onClick={onClick}
-                    className="transition duration-150 border-b-2 border-transparent hover:border-purple-600"
+                    className="pt-5 underline"
                   >
                     Try another image
                   </button>

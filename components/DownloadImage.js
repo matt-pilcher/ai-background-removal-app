@@ -29,7 +29,7 @@ function DownloadImage({
             <div className="max-w-6xl mx-auto px-4 sm:px-6">
               <div className="pt-28 pb-12 md:pt-28 md:pb-20">
                 <div className="max-w-3xl mx-auto text-center pb-6 md:pb-6">
-                  <h4 className="text-xl md:text-2xl font-extrabold leading-tighter tracking-tighter mb-4">
+                  <h4 className="font-bold leading-tight text-gray-900 lg:text-4xl md:text-3xl text-2xl mb-5">
                     Background removal in progress
                   </h4>
                   {/* TODO: Add animated loading icon for better ux */}
@@ -52,16 +52,12 @@ function DownloadImage({
             <div className="pt-28 pb-12 md:pt-28 md:pb-20">
               <div className="max-w-3xl mx-auto text-center pb-6 md:pb-6">
                 {timeOfRequest ? (
-                  <h4 className="text-xl md:text-2xl font-extrabold leading-tighter tracking-tighter">
-                    Background removed in{" "}
-                    <span className="bg-clip-text text-transparent">
-                      {Math.round(timeOfRequest * 10) / 10}
-                    </span>{" "}
-                    seconds
+                  <h4 className="font-bold leading-tight text-gray-900 lg:text-4xl md:text-3xl text-2xl mb-5">
+                    Background removed in {Math.round(timeOfRequest * 10) / 10} seconds
                   </h4>
                 ) : (
-                  <h4 className="text-xl md:text-2xl font-extrabold leading-tighter tracking-tighter">
-                    🎉 Background removed
+                  <h4 className="font-bold leading-tight text-gray-900 lg:text-4xl md:text-3xl text-2xl mb-5">
+                    Background removed
                   </h4>
                 )}
               </div>
@@ -90,7 +86,7 @@ function DownloadImage({
                   <div className="w-full px-3">
                     <button
                       onClick={downloadImage}
-                      className="btn text-white bg-purple-600 hover:bg-purple-700 w-full"
+                      className="btnDefault flex mx-auto"
                     >
                       Download
                     </button>
